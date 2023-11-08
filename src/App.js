@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MapContainer, TileLayer, GeoJSON, Marker, Popup, LayersControl  } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { stateData } from './geojson-data';
+
+const ProvinceInfoOverlay = ({ selectedProvince }) => {
+  if (!selectedProvince) {
+    return null;
+  }
+
+  return (
+    <div className="province-info-overlay">
+      <h3>Province: {selectedProvince.NAME_1}</h3>
+      <p>Land Area: {selectedProvince.land_area} sq. km</p>
+      <p>Number of Farmers: {selectedProvince.farmers}</p>
+    </div>
+  );
+};
 
 export default function App() {
   const ilocosRegionPosition = [17.4756, 120.3863];
@@ -12,6 +26,8 @@ export default function App() {
     iconSize: [32, 32],
     iconAnchor: [16, 32],
   });
+
+  const [selectedProvince, setSelectedProvince] = useState(null);
 
   const geojsonStyle = (feature) => {
     const ID_1 = feature.properties.ID_1;
@@ -43,10 +59,21 @@ export default function App() {
 
   const onEachFeature = (feature, layer) => {
     if (feature.properties && feature.properties.ID_1) {
-      const popupContent = `<div>Province: ${feature.properties.NAME_1}</div>`;
+      const logoURL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Department_of_Agriculture_of_the_Philippines.svg/768px-Department_of_Agriculture_of_the_Philippines.svg.png'; // Replace with the actual path to your logo image
+      const popupContent = `<div style="display: flex; align-items: center;">
+        <img src="${logoURL}" alt="Your Logo" width="100" height="100">
+        <div style="margin-left: 10px;">
+          <p><b>PROVINCE:</b> ${feature.properties.NAME_1}</p>
+          <p><b>AREA:</b> ${feature.properties.AREA}</p>
+          <p><b>NUMBER OF FARMERS:</b> ${feature.properties.FARMER}</p>
+        </div>
+      </div>`;
       layer.bindPopup(popupContent);
     }
   };
+  
+  
+  
 
   //DA Main
   const alienMarkerPosition = [16.609202573817278, 120.31856428991335];
@@ -127,10 +154,10 @@ const precsualPopupContent = `
   
 
   return (
-    
+    <div>
     <MapContainer
       center={ilocosRegionPosition}
-      zoom={14}
+      zoom={8}
       style={{ width: '100vw', height: '100vh' }}
     >
       <LayersControl position="topleft">
@@ -196,5 +223,7 @@ const precsualPopupContent = `
         <Popup><div dangerouslySetInnerHTML={{ __html: precsualPopupContent }} /></Popup>
       </Marker>
     </MapContainer>
+    <ProvinceInfoOverlay selectedProvince={selectedProvince} />
+    </div>
   );
 }

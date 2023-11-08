@@ -14,7 +14,9 @@ export const stateData = {
         "TYPE_1": "Lalawigan|Probinsya",
         "ENGTYPE_1": "Province",
         "PROVINCE": "Ilocos Norte",
-        "REGION": "Ilocos Region (Region I)"
+        "REGION": "Ilocos Region (Region I)",
+        "AREA": "339,934",
+        "FARMER": "87,963"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -14059,7 +14061,9 @@ export const stateData = {
         "TYPE_1": "Lalawigan|Probinsya",
         "ENGTYPE_1": "Province",
         "PROVINCE": "Ilocos Sur",
-        "REGION": "Ilocos Region (Region I)"
+        "REGION": "Ilocos Region (Region I)",
+        "AREA": "257,958",
+        "FARMER": "89,816"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -30000,7 +30004,9 @@ export const stateData = {
         "TYPE_1": "Lalawigan|Probinsya",
         "ENGTYPE_1": "Province",
         "PROVINCE": "La Union",
-        "REGION": "Ilocos Region (Region I)"
+        "REGION": "Ilocos Region (Region I)",
+        "AREA": "149,770",
+        "FARMER": "73,776"
       },
       "geometry": {
         "type": "Polygon",
@@ -39084,7 +39090,9 @@ export const stateData = {
         "TYPE_1": "Lalawigan|Probinsya",
         "ENGTYPE_1": "Province",
         "PROVINCE": "Pangasinan",
-        "REGION": "Ilocos Region (Region I)"
+        "REGION": "Ilocos Region (Region I)",
+        "AREA": "536,818",
+        "FARMER": "207,084"
       },
       "geometry": {
         "type": "MultiPolygon",
