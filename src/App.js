@@ -65,7 +65,7 @@ export default function App() {
         <div style="margin-left: 10px;">
           <p><b>PROVINCE:</b> ${feature.properties.NAME_1}</p>
           <p><b>AREA:</b> ${feature.properties.AREA}</p>
-          <p><b>NUMBER OF FARMERS:</b> ${feature.properties.FARMER}</p>
+          <p><b>NO. OF FARMERS:</b> ${feature.properties.FARMER}</p>
         </div>
       </div>`;
       layer.bindPopup(popupContent);
